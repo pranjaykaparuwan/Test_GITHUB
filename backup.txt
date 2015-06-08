@@ -1,0 +1,116 @@
+from tkinter import *
+import win32
+import xlwt
+import win32com.client
+import sys , os
+fields = 'To', 'Cc', 'Subject', 'Message'
+
+#----------------------------------------------------------------------
+#----------------------------------------------------------------------
+
+def show_entry_fields():
+   print("Reciver's Mail ID:%s\nCC's Mail ID: %s\nSubject:%s\nMessage:%s" % (e1.get(), e2.get(),e3.get(),e4.get()))
+#----------------------------------------------------------------------
+#----------------------------------------------------------------------
+
+
+def mail_send():
+     o = win32com.client.Dispatch("Outlook.Application")
+     Msg = o.CreateItem(0)
+     Msg.To = e1.get()
+    
+     Msg.CC = e2.get()
+     #Msg.BCC = ""
+    
+     Msg.Subject =e3.get()
+     Msg.Body = e4.get()
+     attachment= 'C:\\Users\pranjay.kaparuwan\\Desktop\\Test2.xls'
+     Msg.Attachments.Add(attachment)
+     Msg.Send()
+#----------------------------------------------------------------------
+#----------------------------------------------------------------------
+
+def add_sheet(book, name):
+    """
+    Add a sheet with one line of data
+    """
+    value = "This sheet is named: %s" % name
+    sheet = book.add_sheet(name)
+    sheet.write(0,0, value)
+ 
+#----------------------------------------------------------------------
+#----------------------------------------------------------------------
+def main():
+    """"""
+    book = xlwt.Workbook()
+    sheet1 = book.add_sheet("Testing")
+ 
+    cols = ["maz", "B", "C", "D", "E"]
+    txt = "%s,  %s"
+ 
+    for num in range(5):
+        row = sheet1.row(num)
+        for index, col in enumerate(cols):
+            value = txt % (num+1, col)
+            row.write(index, value)
+
+    book.save("test2.xls")
+
+#----------------------------------------------------------------------
+#----------------------------------------------------------------------
+    
+def fetch(entries):
+   for entry in entries:
+      field = entry[0]
+      text  = entry[1].get()
+      print('%s: "%s"' % (field, text))
+
+#----------------------------------------------------------------------
+#----------------------------------------------------------------------
+    
+def makeform(root, fields):
+   entries = []
+   for field in fields:
+      row = Frame(root)
+      lab = Label(row, width=15, text=field, anchor='w')
+      ent = Entry(row)
+      row.pack(side=TOP, fill=X, padx=5, pady=5)
+      lab.pack(side=LEFT)
+      ent.pack(side=RIGHT, expand=YES, fill=X)
+      entries.append((field, ent))
+   return entries
+
+#----------------------------------------------------------------------
+#----------------------------------------------------------------------
+
+
+if __name__ == '__main__':
+     root = Tk()
+     
+
+     
+     Label(root, text="TO").grid(row=10)
+     Label(root, text="CC").grid(row=11)
+     Label(root, text="SUBJECT").grid(row=12)
+     Label(root, text="MESSAGE").grid(row=13)
+
+     e1 = Entry(root).grid(row=10, column=1)
+     e2 = Entry(root).grid(row=11, column=1)
+     e3 = Entry(root).grid(row=12, column=1)
+     e4 = Entry(root).grid(row=13, column=1)
+        
+     Button(root, text='Quit', command=root.quit).grid(row=16, column=0, sticky=W, pady=4)
+     Button(root, text='Show', command=show_entry_fields).grid(row=16, column=1, sticky=W, pady=4)
+   
+   
+   #root.bind('<Return>', (lambda event, e=ents: fetch(e)))   
+     b0 = Button(root, text="Execute Excel", command=main).grid(row=15, column=1, sticky=W, pady=4)
+     b1 = Button(root, text='Send Mail',command=mail_send).grid(row=17, column=0, sticky=W, pady=4)
+     
+   
+   #b2.pack(side=BOTTOM, padx=5, pady=6)
+     Logo=PhotoImage(file="C:\\Users\\pranjay.kaparuwan\\Desktop\\logo.gif")
+     w=Label(root,image=Logo)
+     w.grid()
+     root.mainloop()
+   
