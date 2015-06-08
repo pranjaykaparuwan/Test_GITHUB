@@ -1,0 +1,144 @@
+cd /apps/t360/scripts/1212/weblogic/
+./apopr
+ 2
+
+
+D:\Dev\WEB-DEV\BuildArchive --- TIM Path
+
+OLD BACK UP IN V DRIVE :
+
+V:\FileServer backup\D Folder\Build\BuildArena\Rel9100
+
+
+pr0p0n1x!!  -- non prod excel sheet pwd
+
+TIM:
+
+cd /apps/t360/scripts/TIM/
+
+sudo -u jboss ./undeployTIMfromDEVQA9100
+
+sudo -u jboss ./deployTIMfromDEVQA9100
+
+sudo -u jboss ./stopJBossDEVQA9100
+
+sudo -u jboss ./startJBossDEVQA9100
+
+
+CONSOLE :: User:: Anil.Kumar  PW :: Anil.Kumar1
+
+TPL-1 : http://162.70.20.28:8955/console/ 
+TPL-2 : http://162.70.20.28:10481/console/
+TPL-3 : http://162.70.20.28:11015/console/
+
+
+
+UAT
+------------
+
+-bash-3.2$ cat /apps/t360/app/1212/ProponixDeployment/Configuration/TradePortal/UAT01-TPANZ/TradePortalVersion.properties
+version=9.2.0.0.0146
+-bash-3.2$ cat /apps/t360/app/1212/ProponixDeployment/Configuration/TradePortal/UAT01-TPANZIDN/TradePortalVersion.properties
+version=9.2.0.0.0146
+
+
+
+version no.
+
+/apps/t360/deployment/TIM/DEVQA9100 ..............
+
+vi TIMVersion.properties
+
+
+---------------------
+cat /t360/app/1212/ProponixDeployment/Configuration/TradePortal/DEV03-TPPG84SERVICES/overrideDate.xml
+
+
+
+find . -name override*
+
+
+
+
+
+
+weblogic path for logs 
+
+cd /apps/t360/logs/oracle/weblogic/1212/logs/DEV01-TPPLY9200
+
+
+--not working ==
+scp DEV02-TPQA9300.log pranjay.kaparuwan@162.70.129.38:C:\Users\pranjay.kaparuwan\Desktop
+
+
+overrided date location
+
+Z:\config\ITO-D\DEPLOY\TPL\Configuration\overritedate.xml
+
+
+
+
+
+
+... env-----> servers---> controls
+
+
+
+
+xwphxt360decr1               10.108.21.51        162.70.20.28:13519
+this is the server
+ as of now we have to deployments only in this server
+ xwphxt360decr2               10.108.21.52      162.70.20.28:13774
+once TFRW is created then we have to start in this
+
+
+
+
+transfering build maunlly .......
+
+deployPortal-DEV01-TPSTRT9200.sh
+
+
+
+Alert monitor path :
+
+D:\APP\OtlAlertMonitors
+
+
+cprpk0394d
+
+
+
+
+Region creation:
+
+1) copy paste from preivous region in any DAAP... and citrix ....
+
+2) ini files edit in deploy folder and custom.ini .........
+
+3) need to create dbscript..in file server
+   and need to update the table as per new schema..
+   there are two tables(connfig setting table and agent table)
+
+
+
+
+new server :
+
+162.70.10.139
+
+AMS\peadmin
+
+
+
+
+<PeriodicTask>
+    <TaskType>EOD_TRANS_MSG</TaskType>
+    <HourToRun>1</HourToRun>
+    <MinuteToRun>0</MinuteToRun>
+    <WindowToRun>7</WindowToRun>
+  </PeriodicTask>
+
+
+
+\\INBLRL5420\coorg
