@@ -1,9 +1,3 @@
-from tkinter import *
-import win32
-import xlwt
-import win32com.client
-import sys , os
-fields = 'To', 'Cc', 'Subject', 'Message'
 
 #----------------------------------------------------------------------
 #----------------------------------------------------------------------
